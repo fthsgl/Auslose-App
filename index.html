@@ -9,11 +9,14 @@
 <body>
   <div class="container">
     <h1>Willkommen zur Lehrerhilfe</h1>
+    
+    <!-- Main Menu -->
     <div id="mainMenu">
-      <button onclick="navigate('gruppenauslosung.html')">Gruppenauslosung</button>
-      <button onclick="navigate('gluecksrad.html')">Glücksrad</button>
+      <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
+      <button onclick="navigate('gluecksrad')">Glücksrad</button>
     </div>
 
+    <!-- Add Participants -->
     <h3>Neue Teilnehmer hinzufügen</h3>
     <form id="studentForm">
       <input type="text" id="studentName" placeholder="Name des Teilnehmers" required>
@@ -21,6 +24,7 @@
     </form>
     <ul id="studentList"></ul>
 
+    <!-- Add Questions -->
     <h3>Neue Frage hinzufügen</h3>
     <form id="questionForm">
       <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
@@ -28,10 +32,16 @@
     </form>
     <ul id="questionList"></ul>
 
-    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+    <!-- Data Management -->
+    <div class="data-management">
+      <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+      <button onclick="exportData()">Daten exportieren</button>
+      <button onclick="importData()">Daten importieren</button>
+      <input type="file" id="importFile" style="display: none;" accept="application/json" onchange="handleFileUpload(event)">
+    </div>
   </div>
 
-  <!-- JavaScript dosyasını sayfanın sonunda yükleyin -->
+  <!-- JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>
