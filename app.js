@@ -24,8 +24,8 @@ document.getElementById('studentForm').addEventListener('submit', function (even
   if (studentName) {
     const students = getStudents();
     students.push(studentName);
-    localStorage.setItem('students', JSON.stringify(students));
-    document.getElementById('studentName').value = '';
+    localStorage.setItem('students', JSON.stringify(students)); // LocalStorage'a kaydet
+    document.getElementById('studentName').value = ''; // Girdi kutusunu temizle
   }
 });
 
