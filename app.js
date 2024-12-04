@@ -19,7 +19,7 @@ function displayStudents() {
   const spinButton = document.getElementById('spinWheel');
 
   if (students.length === 0) {
-    studentList.innerHTML = '<li>Henüz katılımcı eklenmemiş.</li>';
+    studentList.innerHTML = '<li>Keine Teilnehmer vorhanden.</li>';
     if (spinButton) spinButton.disabled = true;
   } else {
     studentList.innerHTML = students.map((student) => `<li>${student}</li>`).join('');
