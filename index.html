@@ -1,39 +1,95 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hauptmenü</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Willkommen zur Lehrerhilfe</h1>
-    <div id="mainMenu">
-      <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
-      <button onclick="navigate('gluecksrad')">Glücksrad</button>
-    </div>
+// Katılımcıları localStorage'dan alır veya boş bir dizi döner
+function getStudents() {
+  return JSON.parse(localStorage.getItem('students')) || [];
+}
 
-    <h3>Neue Teilnehmer hinzufügen</h3>
-    <form id="studentForm">
-      <input type="text" id="studentName" placeholder="Name des Teilnehmers" required>
-      <button type="submit">Hinzufügen</button>
-    </form>
-    <ul id="studentList"></ul>
+// Katılımcıları ekranda görüntüler
+function displayStudents() {
+  const studentList = document.getElementById('studentList');
+  const students = getStudents();
+  studentList.innerHTML = ''; // Önce listeyi temizleyelim
+  if (students.length === 0) {
+    studentList.innerHTML = '<li>Henüz katılımcı eklenmemiş.</li>';
+  } else {
+    studentList.innerHTML = students
+      .map((student) => `<li>${student}</li>`)
+      .join('');
+  }
+}
 
-    <h3>Neue Frage hinzufügen</h3>
-    <form id="questionForm">
-      <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
-      <button type="submit">Hinzufügen</button>
-    </form>
-    
-    <!-- Soruları Göster Butonu ve Liste -->
-    <button onclick="toggleQuestions()">Soruları Göster</button>
-    <ul id="questionList" style="display: none;"></ul>
+// Katılımcı ekleme işlemi
+document.getElementById('studentForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const studentName = document.getElementById('studentName').value.trim();
+  if (studentName) {
+    const students = getStudents();
+    students.push(studentName);
+    localStorage.setItem('students', JSON.stringify(students));
+    document.getElementById('studentName').value = '';
+  }
+});
 
-    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
-  </div>
+// Katılımcıları gösterme/gizleme
+function toggleStudents() {
+  const studentList = document.getElementById('studentList');
+  if (studentList.style.display === 'none') {
+    displayStudents(); // Katılımcıları ekranda göster
+    studentList.style.display = 'block';
+  } else {
+    studentList.style.display = 'none'; // Katılımcıları gizle
+  }
+}
 
-  <script src="app.js"></script>
-</body>
-</html>
+// Soruları localStorage'dan alır veya boş bir dizi döner
+function getQuestions() {
+  return JSON.parse(localStorage.getItem('questions')) || [];
+}
+
+// Soruları ekranda gösterir
+function displayQuestions() {
+  const questionList = document.getElementById('questionList');
+  const questions = getQuestions();
+  questionList.innerHTML = ''; // Önce listeyi temizleyelim
+  if (questions.length === 0) {
+    questionList.innerHTML = '<li>Henüz soru eklenmemiş.</li>';
+  } else {
+    questionList.innerHTML = questions
+      .map((question) => `<li>${question}</li>`)
+      .join('');
+  }
+}
+
+// Soruları gösterme/gizleme
+function toggleQuestions() {
+  const questionList = document.getElementById('questionList');
+  if (questionList.style.display === 'none') {
+    displayQuestions(); // Soruları ekranda göster
+    questionList.style.display = 'block';
+  } else {
+    questionList.style.display = 'none'; // Soruları gizle
+  }
+}
+
+// Soru ekleme işlemi
+document.getElementById('questionForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+  const questionText = document.getElementById('questionText').value.trim();
+  if (questionText) {
+    const questions = getQuestions();
+    questions.push(questionText); // Soruyu ekle
+    localStorage.setItem('questions', JSON.stringify(questions)); // LocalStorage'a kaydet
+    document.getElementById('questionText').value = ''; // Girdi kutusunu temizle
+  }
+});
+
+// Verileri sıfırlama işlemi
+function resetAllData() {
+  if (confirm('Alle Daten wirklich zurücksetzen?')) {
+    localStorage.clear();
+    alert('Alle Daten wurden zurückgesetzt.');
+    window.location.reload();
+  }
+}
+
+// Sayfa yüklendiğinde katılımcıları görüntüle
+displayStudents();
