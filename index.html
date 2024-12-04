@@ -21,8 +21,14 @@
     </form>
     <ul id="studentList"></ul>
 
-    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+    <h3>Neue Frage hinzufügen</h3>
+    <form id="questionForm">
+      <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
+      <button type="submit">Hinzufügen</button>
+    </form>
+    <ul id="questionList"></ul>
   </div>
+
   <script src="app.js"></script>
 </body>
 </html>
