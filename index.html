@@ -14,9 +14,10 @@
     <div id="mainMenu">
       <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
       <button onclick="navigate('gluecksrad')">Glücksrad</button>
+      <button onclick="navigate('manage')">Liste verwalten</button> <!-- New Button -->
     </div>
 
-    <!-- Add Participants -->
+    <!-- Add Participants Section -->
     <h3>Neue Teilnehmer hinzufügen</h3>
     <form id="studentForm">
       <input type="text" id="studentName" placeholder="Name des Teilnehmers" required>
@@ -24,7 +25,7 @@
     </form>
     <ul id="studentList"></ul>
 
-    <!-- Add Questions -->
+    <!-- Add Questions Section -->
     <h3>Neue Frage hinzufügen</h3>
     <form id="questionForm">
       <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
@@ -32,16 +33,10 @@
     </form>
     <ul id="questionList"></ul>
 
-    <!-- Data Management -->
-    <div class="data-management">
-      <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
-      <button onclick="exportData()">Daten exportieren</button>
-      <button onclick="importData()">Daten importieren</button>
-      <input type="file" id="importFile" style="display: none;" accept="application/json" onchange="handleFileUpload(event)">
-    </div>
+    <!-- Reset Data -->
+    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
   </div>
 
-  <!-- JavaScript -->
   <script src="app.js"></script>
 </body>
 </html>
