@@ -7,9 +7,14 @@ function getStudents() {
 function displayStudents() {
   const studentList = document.getElementById('studentList');
   const students = getStudents();
-  studentList.innerHTML = students
-    .map((student) => `<li>${student}</li>`)
-    .join('');
+  studentList.innerHTML = ''; // Önce listeyi temizleyelim
+  if (students.length === 0) {
+    studentList.innerHTML = '<li>Henüz katılımcı eklenmemiş.</li>';
+  } else {
+    studentList.innerHTML = students
+      .map((student) => `<li>${student}</li>`)
+      .join('');
+  }
 }
 
 // Katılımcı ekleme işlemi
@@ -21,9 +26,19 @@ document.getElementById('studentForm').addEventListener('submit', function (even
     students.push(studentName);
     localStorage.setItem('students', JSON.stringify(students));
     document.getElementById('studentName').value = '';
-    displayStudents(); // Listeyi güncelle
   }
 });
+
+// Katılımcıları gösterme/gizleme
+function toggleStudents() {
+  const studentList = document.getElementById('studentList');
+  if (studentList.style.display === 'none') {
+    displayStudents(); // Katılımcıları ekranda göster
+    studentList.style.display = 'block';
+  } else {
+    studentList.style.display = 'none'; // Katılımcıları gizle
+  }
+}
 
 // Soruları localStorage'dan alır veya boş bir dizi döner
 function getQuestions() {
