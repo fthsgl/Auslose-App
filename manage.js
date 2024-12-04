@@ -18,7 +18,7 @@ function renderParticipants() {
   const participants = getParticipants();
 
   if (participants.length === 0) {
-    participantList.innerHTML = '<li>Keine Teilnehmer vorhanden.</li>';
+    participantList.innerHTML = '<li>Keine Schüler vorhanden.</li>';
     return;
   }
 
