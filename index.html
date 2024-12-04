@@ -20,10 +20,21 @@
       <button type="submit">Hinzufügen</button>
     </form>
 
-    <!-- Katılımcıları Göster Butonu -->
     <button onclick="toggleStudents()">Teilnehmer anzeigen</button>
     <ul id="studentList" style="display: none;"></ul>
 
     <h3>Neue Frage hinzufügen</h3>
     <form id="questionForm">
-      <textarea id="questionText" plac
+      <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
+      <button type="submit">Hinzufügen</button>
+    </form>
+
+    <button onclick="toggleQuestions()">Soruları Göster</button>
+    <ul id="questionList" style="display: none;"></ul>
+
+    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
