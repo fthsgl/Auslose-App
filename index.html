@@ -26,7 +26,12 @@
       <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
       <button type="submit">Hinzufügen</button>
     </form>
-    <ul id="questionList"></ul>
+    
+    <!-- Soruları Göster Butonu ve Liste -->
+    <button onclick="toggleQuestions()">Soruları Göster</button>
+    <ul id="questionList" style="display: none;"></ul>
+
+    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
   </div>
 
   <script src="app.js"></script>
