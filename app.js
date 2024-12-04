@@ -1,13 +1,18 @@
-// Katılımcıları localStorage'dan alır veya boş bir dizi döner
+// Sayfa yönlendirmesi için fonksiyon
+function navigate(page) {
+  window.location.href = page; // Sayfayı değiştirme
+}
+
+// Katılımcıların bulunduğu listeyi almak
 function getStudents() {
   return JSON.parse(localStorage.getItem('students')) || [];
 }
 
-// Katılımcıları ekranda görüntüler
+// Katılımcıları görüntülemek
 function displayStudents() {
   const studentList = document.getElementById('studentList');
   const students = getStudents();
-  studentList.innerHTML = ''; // Önce listeyi temizleyelim
+  studentList.innerHTML = ''; 
   if (students.length === 0) {
     studentList.innerHTML = '<li>Henüz katılımcı eklenmemiş.</li>';
   } else {
@@ -17,40 +22,39 @@ function displayStudents() {
   }
 }
 
-// Katılımcı ekleme işlemi
+// Katılımcıları ekleme işlemi
 document.getElementById('studentForm').addEventListener('submit', function (event) {
   event.preventDefault();
   const studentName = document.getElementById('studentName').value.trim();
   if (studentName) {
     const students = getStudents();
     students.push(studentName);
-    localStorage.setItem('students', JSON.stringify(students)); // LocalStorage'a kaydet
-    document.getElementById('studentName').value = ''; // Girdi kutusunu temizle
-    displayStudents(); // Öğrenciyi ekledikten sonra listeyi güncelle
+    localStorage.setItem('students', JSON.stringify(students)); 
+    document.getElementById('studentName').value = ''; 
+    displayStudents(); 
   }
 });
 
-// Katılımcıları gösterme/gizleme
+// Katılımcıları gösterme
 function toggleStudents() {
   const studentList = document.getElementById('studentList');
   if (studentList.style.display === 'none') {
-    displayStudents(); // Katılımcıları ekranda göster
+    displayStudents(); 
     studentList.style.display = 'block';
   } else {
-    studentList.style.display = 'none'; // Katılımcıları gizle
+    studentList.style.display = 'none'; 
   }
 }
 
-// Soruları localStorage'dan alır veya boş bir dizi döner
+// Soruları ekleme işlemi
 function getQuestions() {
   return JSON.parse(localStorage.getItem('questions')) || [];
 }
 
-// Soruları ekranda gösterir
 function displayQuestions() {
   const questionList = document.getElementById('questionList');
   const questions = getQuestions();
-  questionList.innerHTML = ''; // Önce listeyi temizleyelim
+  questionList.innerHTML = ''; 
   if (questions.length === 0) {
     questionList.innerHTML = '<li>Henüz soru eklenmemiş.</li>';
   } else {
@@ -60,14 +64,14 @@ function displayQuestions() {
   }
 }
 
-// Soruları gösterme/gizleme
+// Soruları gösterme
 function toggleQuestions() {
   const questionList = document.getElementById('questionList');
   if (questionList.style.display === 'none') {
-    displayQuestions(); // Soruları ekranda göster
+    displayQuestions();
     questionList.style.display = 'block';
   } else {
-    questionList.style.display = 'none'; // Soruları gizle
+    questionList.style.display = 'none'; 
   }
 }
 
@@ -77,10 +81,10 @@ document.getElementById('questionForm').addEventListener('submit', function (eve
   const questionText = document.getElementById('questionText').value.trim();
   if (questionText) {
     const questions = getQuestions();
-    questions.push(questionText); // Soruyu ekle
-    localStorage.setItem('questions', JSON.stringify(questions)); // LocalStorage'a kaydet
-    document.getElementById('questionText').value = ''; // Girdi kutusunu temizle
-    displayQuestions(); // Soruyu ekledikten sonra listeyi güncelle
+    questions.push(questionText); 
+    localStorage.setItem('questions', JSON.stringify(questions)); 
+    document.getElementById('questionText').value = ''; 
+    displayQuestions(); 
   }
 });
 
