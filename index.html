@@ -10,8 +10,8 @@
   <div class="container">
     <h1>Willkommen zur Lehrerhilfe</h1>
     <div id="mainMenu">
-      <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
-      <button onclick="navigate('gluecksrad')">Glücksrad</button>
+      <button onclick="navigate('gruppenauslosung.html')">Gruppenauslosung</button>
+      <button onclick="navigate('gluecksrad.html')">Glücksrad</button>
     </div>
 
     <h3>Neue Teilnehmer hinzufügen</h3>
@@ -19,18 +19,14 @@
       <input type="text" id="studentName" placeholder="Name des Teilnehmers" required>
       <button type="submit">Hinzufügen</button>
     </form>
-
-    <button onclick="toggleStudents()">Teilnehmer anzeigen</button>
-    <ul id="studentList" style="display: none;"></ul>
+    <ul id="studentList"></ul>
 
     <h3>Neue Frage hinzufügen</h3>
     <form id="questionForm">
       <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
       <button type="submit">Hinzufügen</button>
     </form>
-
-    <button onclick="toggleQuestions()">Soruları Göster</button>
-    <ul id="questionList" style="display: none;"></ul>
+    <ul id="questionList"></ul>
 
     <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
   </div>
