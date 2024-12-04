@@ -1,4 +1,4 @@
-// Katılımcıları `localStorage`'tan alır veya boş bir dizi döner
+// Katılımcıları localStorage'dan alır veya boş bir dizi döner
 function getStudents() {
   return JSON.parse(localStorage.getItem('students')) || [];
 }
@@ -25,7 +25,7 @@ document.getElementById('studentForm').addEventListener('submit', function (even
   }
 });
 
-// Soruları `localStorage`'tan alır veya boş bir dizi döner
+// Soruları localStorage'dan alır veya boş bir dizi döner
 function getQuestions() {
   return JSON.parse(localStorage.getItem('questions')) || [];
 }
@@ -34,19 +34,24 @@ function getQuestions() {
 function displayQuestions() {
   const questionList = document.getElementById('questionList');
   const questions = getQuestions();
-  questionList.innerHTML = questions
-    .map((question) => `<li>${question}</li>`)
-    .join('');
+  questionList.innerHTML = ''; // Önce listeyi temizleyelim
+  if (questions.length === 0) {
+    questionList.innerHTML = '<li>Henüz soru eklenmemiş.</li>';
+  } else {
+    questionList.innerHTML = questions
+      .map((question) => `<li>${question}</li>`)
+      .join('');
+  }
 }
 
 // Soruları gösterme/gizleme
 function toggleQuestions() {
   const questionList = document.getElementById('questionList');
   if (questionList.style.display === 'none') {
-    displayQuestions();
+    displayQuestions(); // Soruları ekranda göster
     questionList.style.display = 'block';
   } else {
-    questionList.style.display = 'none';
+    questionList.style.display = 'none'; // Soruları gizle
   }
 }
 
@@ -56,9 +61,9 @@ document.getElementById('questionForm').addEventListener('submit', function (eve
   const questionText = document.getElementById('questionText').value.trim();
   if (questionText) {
     const questions = getQuestions();
-    questions.push(questionText);
-    localStorage.setItem('questions', JSON.stringify(questions));
-    document.getElementById('questionText').value = '';
+    questions.push(questionText); // Soruyu ekle
+    localStorage.setItem('questions', JSON.stringify(questions)); // LocalStorage'a kaydet
+    document.getElementById('questionText').value = ''; // Girdi kutusunu temizle
   }
 });
 
