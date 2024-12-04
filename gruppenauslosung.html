@@ -9,14 +9,22 @@
 <body>
   <div class="container">
     <h1>Gruppenauslosung</h1>
+
+    <!-- Group Form -->
     <form id="groupForm">
       <label for="groupCount">Anzahl der Gruppen:</label>
       <input type="number" id="groupCount" min="1" required>
       <button type="submit">Gruppen erstellen</button>
     </form>
-    <div id="groupResults"></div>
+
+    <!-- Group Results -->
+    <div id="groupResults" class="group-results"></div>
+    
+    <!-- Back to Main Menu -->
     <button onclick="navigate('index')">Zurück zum Hauptmenü</button>
   </div>
+
+  <!-- JavaScript -->
   <script src="gruppenauslosung.js"></script>
 </body>
 </html>
