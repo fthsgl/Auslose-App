@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hauptmenü</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Willkommen zur Lehrerhilfe</h1>
+    <div id="mainMenu">
+      <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
+      <button onclick="navigate('gluecksrad')">Glücksrad</button>
+    </div>
+
+    <h3>Neue Teilnehmer hinzufügen</h3>
+    <form id="studentForm">
+      <input type="text" id="studentName" placeholder="Name des Teilnehmers" required>
+      <button type="submit">Hinzufügen</button>
+    </form>
+    <ul id="studentList"></ul>
+
+    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
