@@ -26,6 +26,7 @@ document.getElementById('studentForm').addEventListener('submit', function (even
     students.push(studentName);
     localStorage.setItem('students', JSON.stringify(students)); // LocalStorage'a kaydet
     document.getElementById('studentName').value = ''; // Girdi kutusunu temizle
+    displayStudents(); // Öğrenciyi ekledikten sonra listeyi güncelle
   }
 });
 
@@ -79,6 +80,7 @@ document.getElementById('questionForm').addEventListener('submit', function (eve
     questions.push(questionText); // Soruyu ekle
     localStorage.setItem('questions', JSON.stringify(questions)); // LocalStorage'a kaydet
     document.getElementById('questionText').value = ''; // Girdi kutusunu temizle
+    displayQuestions(); // Soruyu ekledikten sonra listeyi güncelle
   }
 });
 
