@@ -3,40 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hauptmenü der Auslose-App">
+  <meta name="keywords" content="Auslose, App, Hauptmenü, Gruppenauslosung, Glücksrad, Liste verwalten">
+  <meta name="author" content="Your Name">
   <title>Hauptmenü</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Willkommen ! </h1>
-    
-    <!-- Main Menu -->
-    <div id="mainMenu">
-      <button onclick="navigate('gruppenauslosung')">Gruppenauslosung</button>
-      <button onclick="navigate('gluecksrad')">Glücksrad</button>
-      <button onclick="navigate('manage')">Liste verwalten</button> <!-- New Button -->
-    </div>
+    <header>
+      <h1>Willkommen ! </h1>
+    </header>
+    <main>
+      <!-- Main Menu -->
+      <section id="mainMenu">
+        <button onclick="navigate('gruppenauslosung')" aria-label="Gruppenauslosung">Gruppenauslosung</button>
+        <button onclick="navigate('gluecksrad')" aria-label="Glücksrad">Glücksrad</button>
+        <button onclick="navigate('manage')" aria-label="Liste verwalten">Liste verwalten</button> <!-- New Button -->
+      </section>
 
-    <!-- Add Participants Section -->
-    <h3>Schüler hinzufügen</h3>
-    <form id="studentForm">
-      <input type="text" id="studentName" placeholder="Name des Schülers" required>
-      <button type="submit">Hinzufügen</button>
-    </form>
-    <ul id="studentList"></ul>
+      <!-- Add Participants Section -->
+      <section>
+        <h3>Schüler hinzufügen</h3>
+        <form id="studentForm" aria-label="Schüler hinzufügen">
+          <label for="studentName">Name des Schülers</label>
+          <input type="text" id="studentName" placeholder="Name des Schülers" required>
+          <button type="submit">Hinzufügen</button>
+        </form>
+        <ul id="studentList"></ul>
+      </section>
 
-    <!-- Add Questions Section -->
-    <h3>Neue Frage hinzufügen</h3>
-    <form id="questionForm">
-      <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
-      <button type="submit">Hinzufügen</button>
-    </form>
-    <ul id="questionList"></ul>
+      <!-- Add Questions Section -->
+      <section>
+        <h3>Neue Frage hinzufügen</h3>
+        <form id="questionForm" aria-label="Neue Frage hinzufügen">
+          <label for="questionText">Frage eingeben</label>
+          <textarea id="questionText" placeholder="Frage eingeben" required></textarea>
+          <button type="submit">Hinzufügen</button>
+        </form>
+        <ul id="questionList"></ul>
+      </section>
 
-    <!-- Reset Data -->
-    <button onclick="resetAllData()">Alle Daten zurücksetzen</button>
+      <!-- Reset Data -->
+      <button onclick="resetAllData()" aria-label="Alle Daten zurücksetzen">Alle Daten zurücksetzen</button>
+    </main>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
