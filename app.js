@@ -50,7 +50,7 @@ function displayQuestions() {
   const questions = getQuestions();
   questionList.innerHTML = '';
   if (questions.length === 0) {
-    questionList.innerHTML = '<li>Henüz soru eklenmemiş.</li>';
+    questionList.innerHTML = '<li>Keine Frage vorhanden.</li>';
   } else {
     questionList.innerHTML = questions.map((question) => `<li>${question}</li>`).join('');
   }
