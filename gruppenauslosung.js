@@ -1,18 +1,17 @@
 document.getElementById('group-form').addEventListener('submit', function (e) {
     e.preventDefault();
+    const groupSize = document.getElementById('group-size').value;
+    const students = JSON.parse(localStorage.getItem('students')) || [];
 
-    const studentList = JSON.parse(localStorage.getItem('students')) || [];
-    const groupCount = parseInt(document.getElementById('group-count').value);
-    
-    if (groupCount && studentList.length >= groupCount) {
-        const groups = createGroups(studentList, groupCount);
+    if (groupSize && students.length >= groupSize) {
+        const groups = createGroups(students, groupSize);
         displayGroups(groups);
     } else {
-        alert("Geçerli bir grup sayısı giriniz!");
+        alert("Geçerli bir grup boyutu girin!");
     }
 });
 
-// Öğrencileri gruplara ayıran fonksiyon
+// Öğrencileri gruplara ayırma
 function createGroups(students, groupSize) {
     const groups = [];
     while (students.length) {
@@ -26,9 +25,9 @@ function createGroups(students, groupSize) {
     return groups;
 }
 
-// Grupları ekrana yazdırma
+// Grupları ekranda gösterme
 function displayGroups(groups) {
-    const output = document.getElementById('group-output');
+    const output = document.getElementById('groups');
     output.innerHTML = '';
     groups.forEach((group, index) => {
         const groupText = `Grup ${index + 1}: ${group.join(', ')}`;
