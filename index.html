@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App mit Glücksrad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Willkommen zur Web App</h1>
+
+        <div class="forms">
+            <form id="student-form">
+                <input type="text" id="student-name" placeholder="Studentenname eingeben" required>
+                <button type="submit" class="btn-primary">Student hinzufügen</button>
+            </form>
+
+            <form id="item-form">
+                <input type="text" id="item-name" placeholder="Item eingeben" required>
+                <button type="submit" class="btn-primary">Item hinzufügen</button>
+            </form>
+        </div>
+
+        <div class="buttons">
+            <button id="group-draw" class="btn-secondary">Gruppenauslosung</button>
+            <button id="spin-wheel" class="btn-secondary">Glücksrad</button>
+        </div>
+
+        <div class="lists">
+            <h2>Studenten:</h2>
+            <ul id="student-list"></ul>
+
+            <h2>Items:</h2>
+            <ul id="item-list"></ul>
+        </div>
+
+        <div id="output"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
