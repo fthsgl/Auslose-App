@@ -1,62 +1,92 @@
-document.addEventListener("DOMContentLoaded", function () {
-    loadStudents();
-    loadItems();
-});
-
-// Öğrenci ekleme
+// Öğrenciyi ekleme
 document.getElementById('add-student').addEventListener('click', function () {
     const studentName = document.getElementById('student-name').value;
-    if (studentName) {
+    if (studentName !== '') {
         let students = JSON.parse(localStorage.getItem('students')) || [];
         students.push(studentName);
         localStorage.setItem('students', JSON.stringify(students));
+        document.getElementById('student-name').value = '';
         loadStudents();
-        document.getElementById('student-name').value = '';  // Clear input
     }
 });
 
-// Item ekleme
-document.getElementById('add-item').addEventListener('click', function () {
-    const itemName = document.getElementById('item-name').value;
-    if (itemName) {
-        let items = JSON.parse(localStorage.getItem('items')) || [];
-        items.push(itemName);
-        localStorage.setItem('items', JSON.stringify(items));
-        loadItems();
-        document.getElementById('item-name').value = '';  // Clear input
-    }
-});
-
-// Öğrencileri listele
+// Öğrencileri listeleme ve silme
 function loadStudents() {
     const studentList = document.getElementById('student-list');
     const students = JSON.parse(localStorage.getItem('students')) || [];
     studentList.innerHTML = '<h3>Öğrenciler</h3>';
-    students.forEach(student => {
+    students.forEach((student, index) => {
         const li = document.createElement('li');
         li.textContent = student;
+
+        // Silme butonu
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Sil';
+        deleteButton.classList.add('btn', 'btn-danger', 'ms-2');
+        deleteButton.addEventListener('click', () => deleteStudent(index));
+
+        li.appendChild(deleteButton);
         studentList.appendChild(li);
     });
 }
 
-// Items'ı listele
+// Öğrenci silme
+function deleteStudent(index) {
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+    students.splice(index, 1); // Öğrenciyi sil
+    localStorage.setItem('students', JSON.stringify(students));
+    loadStudents(); // Listeyi yeniden yükle
+}
+
+// Item ekleme
+document.getElementById('add-item').addEventListener('click', function () {
+    const itemName = document.getElementById('item-name').value;
+    if (itemName !== '') {
+        let items = JSON.parse(localStorage.getItem('items')) || [];
+        items.push(itemName);
+        localStorage.setItem('items', JSON.stringify(items));
+        document.getElementById('item-name').value = '';
+        loadItems();
+    }
+});
+
+// Item'ları listeleme ve silme
 function loadItems() {
     const itemList = document.getElementById('item-list');
     const items = JSON.parse(localStorage.getItem('items')) || [];
     itemList.innerHTML = '<h3>Items</h3>';
-    items.forEach(item => {
+    items.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = item;
+
+        // Silme butonu
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Sil';
+        deleteButton.classList.add('btn', 'btn-danger', 'ms-2');
+        deleteButton.addEventListener('click', () => deleteItem(index));
+
+        li.appendChild(deleteButton);
         itemList.appendChild(li);
     });
 }
 
-// Gruplama sayfasına yönlendirme
-document.getElementById('group-draw').addEventListener('click', function () {
-    window.location.href = 'gruppenauslosung.html';
+// Item silme
+function deleteItem(index) {
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+    items.splice(index, 1); // Item'ı sil
+    localStorage.setItem('items', JSON.stringify(items));
+    loadItems(); // Listeyi yeniden yükle
+}
+
+// Sayfalar arası yönlendirme
+document.getElementById('grouping-btn').addEventListener('click', function () {
+    window.location.href = 'grouping.html';
 });
 
-// Glücksrad sayfasına yönlendirme
-document.getElementById('spin-wheel').addEventListener('click', function () {
-    window.location.href = 'gluecksrad.html';
+document.getElementById('wheel-btn').addEventListener('click', function () {
+    window.location.href = 'wheel.html';
 });
+
+// İlk yükleme
+loadStudents();
+loadItems();
