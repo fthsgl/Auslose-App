@@ -10,6 +10,6 @@ document.getElementById('spin').addEventListener('click', function () {
             const randomItem = items[Math.floor(Math.random() * items.length)];
             document.getElementById('wheel-result').textContent = `Seçilen Item: ${randomItem}`;
             wheel.classList.remove('spin');
-        }, 3000); // 3 saniye sonra sonucu göster
+        }, 3000);
     }
 });
