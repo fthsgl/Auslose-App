@@ -1,38 +1,21 @@
-document.getElementById('group-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.getElementById('create-groups').addEventListener('click', function () {
     const groupSize = document.getElementById('group-size').value;
     const students = JSON.parse(localStorage.getItem('students')) || [];
 
-    if (groupSize && students.length >= groupSize) {
-        const groups = createGroups(students, groupSize);
-        displayGroups(groups);
+    if (groupSize && groupSize > 0 && students.length > 0) {
+        let groups = [];
+        for (let i = 0; i < students.length; i += groupSize) {
+            groups.push(students.slice(i, i + groupSize));
+        }
+
+        const resultDiv = document.getElementById('group-result');
+        resultDiv.innerHTML = '<h3>Gruppen:</h3>';
+        groups.forEach((group, index) => {
+            const groupDiv = document.createElement('div');
+            groupDiv.innerHTML = `<h4>Gruppe ${index + 1}</h4><p>${group.join(', ')}</p>`;
+            resultDiv.appendChild(groupDiv);
+        });
     } else {
-        alert("Geçerli bir grup boyutu girin!");
+        alert('Geçerli bir grup boyutu girin!');
     }
 });
-
-// Öğrencileri gruplara ayırma
-function createGroups(students, groupSize) {
-    const groups = [];
-    while (students.length) {
-        const group = [];
-        while (group.length < groupSize && students.length) {
-            const randomIndex = Math.floor(Math.random() * students.length);
-            group.push(students.splice(randomIndex, 1)[0]);
-        }
-        groups.push(group);
-    }
-    return groups;
-}
-
-// Grupları ekranda gösterme
-function displayGroups(groups) {
-    const output = document.getElementById('groups');
-    output.innerHTML = '';
-    groups.forEach((group, index) => {
-        const groupText = `Grup ${index + 1}: ${group.join(', ')}`;
-        const p = document.createElement('p');
-        p.textContent = groupText;
-        output.appendChild(p);
-    });
-}
