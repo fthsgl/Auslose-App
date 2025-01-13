@@ -1,0 +1,131 @@
+/* Genel Stil Ayarları */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 50px;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Öğrenci ve Item Listesi */
+#student-list, #item-list {
+    border-top: 2px solid #007bff;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+#student-list li, #item-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#student-list li button, #item-list li button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+}
+
+/* Buton Stilleri */
+button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Glücksrad */
+.wheel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.wheel {
+    width: 250px;
+    height: 250px;
+    border: 15px solid #007bff;
+    border-radius: 50%;
+    background: conic-gradient(
+        #007bff 0deg 72deg, 
+        #28a745 72deg 144deg, 
+        #ff6347 144deg 216deg, 
+        #f1c40f 216deg 288deg, 
+        #9b59b6 288deg 360deg
+    );
+    position: relative;
+    transition: transform 3s ease-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wheel.spin {
+    transform: rotate(1080deg);
+}
+
+#wheel-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Ok Görseli (Wheel Pointer) */
+.wheel-container::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid #333;
+}
