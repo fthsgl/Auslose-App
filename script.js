@@ -33,9 +33,9 @@ function loadStudents() {
 // Öğrenci silme
 function deleteStudent(index) {
     let students = JSON.parse(localStorage.getItem('students')) || [];
-    students.splice(index, 1); // Öğrenciyi sil
+    students.splice(index, 1);
     localStorage.setItem('students', JSON.stringify(students));
-    loadStudents(); // Listeyi yeniden yükle
+    loadStudents();
 }
 
 // Item ekleme
@@ -73,9 +73,9 @@ function loadItems() {
 // Item silme
 function deleteItem(index) {
     let items = JSON.parse(localStorage.getItem('items')) || [];
-    items.splice(index, 1); // Item'ı sil
+    items.splice(index, 1);
     localStorage.setItem('items', JSON.stringify(items));
-    loadItems(); // Listeyi yeniden yükle
+    loadItems();
 }
 
 // Sayfalar arası yönlendirme
