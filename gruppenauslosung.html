@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gruppenauslosung</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Gruppenauslosung</h1>
+    <div class="container mt-5">
+        <h1 class="display-4 text-center text-primary">Gruppenauslosung</h1>
+
         <form id="group-form">
-            <label for="group-count">Gruplar için öğrenci sayısı:</label>
-            <input type="number" id="group-count" placeholder="Gruplara ayırmak istediğiniz öğrenci sayısı" required>
-            <button type="submit" class="btn-primary">Grupları Oluştur</button>
+            <div class="mb-4">
+                <input type="number" id="group-size" class="form-control" placeholder="Her grupta kaç öğrenci olmalı?" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Grupları Oluştur</button>
         </form>
 
-        <div id="group-output"></div>
-
-        <button class="btn-secondary" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+        <div id="groups" class="mt-5"></div>
+        
+        <button class="btn btn-secondary mt-4" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
     </div>
 
     <script src="gruppenauslosung.js"></script>
