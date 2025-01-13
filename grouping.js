@@ -1,8 +1,8 @@
 document.getElementById('create-groups').addEventListener('click', function () {
-    const groupSize = document.getElementById('group-size').value;
+    const groupSize = parseInt(document.getElementById('group-size').value, 10);
     const students = JSON.parse(localStorage.getItem('students')) || [];
 
-    if (groupSize && groupSize > 0 && students.length > 0) {
+    if (groupSize > 0 && students.length > 0) {
         let groups = [];
         for (let i = 0; i < students.length; i += groupSize) {
             groups.push(students.slice(i, i + groupSize));
