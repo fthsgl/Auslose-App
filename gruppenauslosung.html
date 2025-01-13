@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gruppenauslosung</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gruppenauslosung</h1>
+        <form id="group-form">
+            <label for="group-count">Gruplar için öğrenci sayısı:</label>
+            <input type="number" id="group-count" placeholder="Gruplara ayırmak istediğiniz öğrenci sayısı" required>
+            <button type="submit" class="btn-primary">Grupları Oluştur</button>
+        </form>
+
+        <div id="group-output"></div>
+
+        <button class="btn-secondary" onclick="window.location.href='index.html'">Ana Sayfaya Dön</button>
+    </div>
+
+    <script src="gruppenauslosung.js"></script>
+</body>
+</html>
