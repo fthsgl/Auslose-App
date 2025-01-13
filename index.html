@@ -9,33 +9,31 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="text-center mb-5">
-            <h1 class="display-4 text-primary">Willkommen zur Web App</h1>
-            <p class="lead">Gruppenauslosung und Glücksrad</p>
+    <div class="container text-center mt-5">
+        <h1 class="display-4">Willkommen zur Web App</h1>
+        <p class="lead">Gruppenauslosung und Glücksrad</p>
+
+        <!-- Kullanıcı Adı Girişi -->
+        <div class="mb-4">
+            <input type="text" id="student-name" class="form-control" placeholder="Öğrenci adı girin" required>
+            <button class="btn btn-primary mt-3" id="add-student">Öğrenci Ekle</button>
         </div>
 
-        <div class="row justify-content-center">
-            <!-- Öğrenci Ekleme -->
-            <div class="col-md-6 mb-4">
-                <input type="text" id="student-name" class="form-control" placeholder="Öğrenci adı girin" required>
-                <button class="btn btn-primary w-100 mt-3" id="add-student">Öğrenci Ekle</button>
-            </div>
-
-            <!-- Item Ekleme -->
-            <div class="col-md-6 mb-4">
-                <input type="text" id="item-name" class="form-control" placeholder="Item adı girin" required>
-                <button class="btn btn-success w-100 mt-3" id="add-item">Item Ekle</button>
-            </div>
+        <!-- Item Girişi -->
+        <div class="mb-4">
+            <input type="text" id="item-name" class="form-control" placeholder="Item adı girin" required>
+            <button class="btn btn-success mt-3" id="add-item">Item Ekle</button>
         </div>
 
-        <div class="d-flex justify-content-around mt-5">
+        <!-- Butonlar -->
+        <div class="mt-4">
             <button class="btn btn-warning btn-lg" id="group-draw">Gruppenauslosung</button>
             <button class="btn btn-info btn-lg" id="spin-wheel">Glücksrad</button>
         </div>
 
-        <div id="student-list" class="mt-5"></div>
-        <div id="item-list" class="mt-5"></div>
+        <!-- Öğrenci ve Item Listeleri -->
+        <div id="student-list" class="mt-4"></div>
+        <div id="item-list" class="mt-4"></div>
     </div>
 
     <script src="script.js"></script>
