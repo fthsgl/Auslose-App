@@ -1,38 +1,37 @@
-// Sayfa yüklendiğinde localStorage'dan verileri yükle
 document.addEventListener("DOMContentLoaded", function () {
     loadStudents();
     loadItems();
 });
 
 // Öğrenci ekleme
-document.getElementById('student-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.getElementById('add-student').addEventListener('click', function () {
     const studentName = document.getElementById('student-name').value;
     if (studentName) {
         let students = JSON.parse(localStorage.getItem('students')) || [];
         students.push(studentName);
         localStorage.setItem('students', JSON.stringify(students));
         loadStudents();
+        document.getElementById('student-name').value = '';  // Clear input
     }
 });
 
 // Item ekleme
-document.getElementById('item-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.getElementById('add-item').addEventListener('click', function () {
     const itemName = document.getElementById('item-name').value;
     if (itemName) {
         let items = JSON.parse(localStorage.getItem('items')) || [];
         items.push(itemName);
         localStorage.setItem('items', JSON.stringify(items));
         loadItems();
+        document.getElementById('item-name').value = '';  // Clear input
     }
 });
 
-// Öğrencileri listeliyoruz
+// Öğrencileri listele
 function loadStudents() {
     const studentList = document.getElementById('student-list');
     const students = JSON.parse(localStorage.getItem('students')) || [];
-    studentList.innerHTML = '';
+    studentList.innerHTML = '<h3>Öğrenciler</h3>';
     students.forEach(student => {
         const li = document.createElement('li');
         li.textContent = student;
@@ -40,11 +39,11 @@ function loadStudents() {
     });
 }
 
-// Items'ı listeliyoruz
+// Items'ı listele
 function loadItems() {
     const itemList = document.getElementById('item-list');
     const items = JSON.parse(localStorage.getItem('items')) || [];
-    itemList.innerHTML = '';
+    itemList.innerHTML = '<h3>Items</h3>';
     items.forEach(item => {
         const li = document.createElement('li');
         li.textContent = item;
