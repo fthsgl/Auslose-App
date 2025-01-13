@@ -14,29 +14,29 @@
         <!-- Kullanıcı adı giriş -->
         <div class="mb-3">
             <label for="username" class="form-label">Benutzername</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" id="username" placeholder="Benutzername eingeben">
         </div>
 
         <!-- Öğrenci ekleme -->
         <div class="mb-3">
             <label for="student-name" class="form-label">Öğrenci Adı</label>
-            <input type="text" class="form-control" id="student-name">
+            <input type="text" class="form-control" id="student-name" placeholder="Öğrenci adını girin">
             <button class="btn btn-primary mt-2" id="add-student">Öğrenci Ekle</button>
         </div>
-        <div id="student-list" class="mt-4"></div>
+        <ul id="student-list" class="list-group mt-4"></ul>
 
         <!-- Item ekleme -->
         <div class="mb-3">
             <label for="item-name" class="form-label">Item Adı</label>
-            <input type="text" class="form-control" id="item-name">
+            <input type="text" class="form-control" id="item-name" placeholder="Item adını girin">
             <button class="btn btn-primary mt-2" id="add-item">Item Ekle</button>
         </div>
-        <div id="item-list" class="mt-4"></div>
+        <ul id="item-list" class="list-group mt-4"></ul>
 
         <!-- Gruplama ve Glücksrad -->
         <div class="mt-5 d-flex justify-content-around">
-            <button class="btn btn-secondary btn-lg" id="grouping-btn">Gruppenauslosung</button>
-            <button class="btn btn-secondary btn-lg" id="wheel-btn">Glücksrad</button>
+            <a href="grouping.html" class="btn btn-secondary btn-lg">Gruppenauslosung</a>
+            <a href="wheel.html" class="btn btn-secondary btn-lg">Glücksrad</a>
         </div>
     </div>
 
